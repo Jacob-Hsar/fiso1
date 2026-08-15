@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>House of J&S – Digital Technology Quiz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: linear-gradient(145deg, #fcf6e9 0%, #f5ebd0 100%);
+            color: #3d2a0c;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .app {
+            max-width: 1150px;
+            width: 100%;
+            margin: 0 auto;
+            background: rgba(255, 251, 235, 0.80);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border-radius: 48px;
+            box-shadow: 0 30px 80px rgba(80, 50, 10, 0.20), 0 10px 30px rgba(0, 0, 0, 0.03);
+            padding: 28px 32px 40px;
+            border: 2px solid rgba(212, 175, 55, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        /* ---------- Brand Header with Logo ---------- */
+        .brand-header {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            padding: 12px 18px 12px 12px;
+            margin-bottom: 28px;
+            background: rgba(255, 248, 225, 0.6);
+            border-radius: 32px;
+            border: 2px solid rgba(212, 175, 55, 0.5);
+            flex-wrap: wrap;
+            box-shadow: inset 0 0 30px rgba(212, 175, 55, 0.05);
+        }
+
+        .logo-placeholder {
+            width: 80px;
+            height: 80px;
+            background: #ffffff;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 2px solid #d4af37;
+            box-shadow: 0 8px 20px rgba(184, 134, 11, 0.25);
+            flex-shrink: 0;
+            padding: 8px;
+        }
+        .logo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .brand-text h2 {
+            font-weight: 700;
+            font-size: 24px;
+            letter-spacing: -0.4px;
+            color: #5a3e0b;
+            background: linear-gradient(135deg, #8b6508, #d4af37, #b8860b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .brand-text small {
+            font-size: 14px;
+            color: #8b7a5a;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            -webkit-text-fill-color: #8b7a5a;
+        }
+
+        /* ---------- Headings ---------- */
+        h1 {
+            font-weight: 700;
+            font-size: 28px;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 18px;
+            margin-bottom: 24px;
+            color: #5a3e0b;
+        }
+        h1 small {
+            font-size: 15px;
+            font-weight: 500;
+            color: #a08050;
+            margin-left: 2px;
+        }
+        .badge-total {
+            margin-left: auto;
+            background: rgba(212, 175, 55, 0.15);
+            padding: 6px 22px;
+            border-radius: 60px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #8b6508;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+        }
+        .submitted-badge {
+            background: #b8860b;
+            color: white;
+            padding: 4px 20px;
+            border-radius: 60px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-left: 8px;
+            display: none;
+            box-shadow: 0 4px 12px rgba(184, 134, 11, 0.4);
+        }
+        .submitted-badge.show {
+            display: inline-block;
+        }
+
+        /* ---------- Tabs ---------- */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 28px;
+            padding-bottom: 4px;
+        }
+        .tab-btn {
+            background: rgba(255, 248, 230, 0.6);
+            border: 1.5px solid rgba(212, 175, 55, 0.3);
+            padding: 10px 24px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #7a5a20;
+            cursor: pointer;
+            transition: 0.25s cubic-bezier(0.2, 0.9, 0.4, 1);
+            backdrop-filter: blur(4px);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+        .tab-btn:hover {
+            background: rgba(255, 248, 230, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(184, 134, 11, 0.15);
+            border-color: #d4af37;
+        }
+        .tab-btn.active {
+            background: linear-gradient(135deg, #d4af37, #b8860b);
+            border-color: #b8860b;
+            color: white;
+            box-shadow: 0 8px 24px rgba(184, 134, 11, 0.35);
+        }
+        .tab-btn .count {
+            font-weight: 500;
+            font-size: 12px;
+            opacity: 0.8;
+            margin-left: 6px;
+        }
+
+        /* ---------- Summary Box ---------- */
+        .summary-box {
+            background: linear-gradient(135deg, #fef9e7, #fdf0d5);
+            border: 2px solid #d4af37;
+            border-radius: 20px;
+            padding: 18px 28px;
+            margin-bottom: 24px;
+            display: none;
+            font-weight: 600;
+            font-size: 17px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(184, 134, 11, 0.10);
+            backdrop-filter: blur(4px);
+        }
+        .summary-box.show {
+            display: block;
+            animation: fadeSlide 0.3s ease;
+        }
+        @keyframes fadeSlide {
+            0% { opacity: 0; transform: translateY(-8px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .summary-box .correct-count {
+            color: #0b6e4f;
+        }
+        .summary-box .wrong-count {
+            color: #b91c1c;
+        }
+        .summary-box .unanswered-count {
+            color: #b45309;
+        }
+
+        /* ---------- Quiz Container ---------- */
+        .quiz-container {
+            display: block;
+        }
+        .tab-content {
+            max-height: 72vh;
+            overflow-y: auto;
+            padding-right: 6px;
+        }
+        .tab-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        .tab-content::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.02);
+            border-radius: 10px;
+        }
+        .tab-content::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 10px;
+        }
+
+        .question-card {
+            background: rgba(255, 252, 242, 0.80);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 24px;
+            padding: 20px 24px 18px;
+            margin-bottom: 16px;
+            transition: 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        .question-card:hover {
+            border-color: #d4af37;
+            box-shadow: 0 8px 30px rgba(184, 134, 11, 0.12);
+            transform: translateY(-2px) scale(1.005);
+            background: rgba(255, 252, 242, 0.95);
+        }
+
+        /* ---------- 3D Icon Wrapper (Enhanced & Floating) ---------- */
+        .icon-3d-wrapper {
+            flex-shrink: 0;
+            width: 88px;
+            height: 88px;
+            perspective: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: floatIcon 5s ease-in-out infinite;
+            transition: transform 0.3s ease;
+            filter: drop-shadow(0 10px 20px rgba(184, 134, 11, 0.25));
+        }
+        .question-card:hover .icon-3d-wrapper {
+            transform: perspective(500px) rotateX(4deg) rotateY(8deg) scale(1.08);
+            filter: drop-shadow(0 15px 30px rgba(184, 134, 11, 0.45));
+        }
+        @keyframes floatIcon {
+            0% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
+            50% { transform: translateY(-8px) rotateX(2deg) rotateY(4deg); }
+            100% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
+        }
+        .icon-3d-wrapper svg {
+            width: 100%;
+            height: 100%;
+            transition: filter 0.3s;
+        }
+
+        .q-content {
+            flex: 1;
+            min-width: 0;
+        }
+        .q-top-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            width: 100%;
+            margin-bottom: 4px;
+        }
+        .q-num {
+            font-weight: 700;
+            color: #8b6508;
+            font-size: 13px;
+            min-width: 40px;
+            background: rgba(212, 175, 55, 0.15);
+            padding: 4px 10px;
+            border-radius: 40px;
+            text-align: center;
+            flex-shrink: 0;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .q-text {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #3d2a0c;
+        }
+        .code-block {
+            background: #2a1f0a;
+            color: #f5e7b8;
+            padding: 12px 18px;
+            border-radius: 14px;
+            font-size: 13px;
+            overflow-x: auto;
+            margin: 8px 0 10px 0;
+            border: 1px solid #b8860b;
+            font-family: 'Cascadia Code', 'Fira Code', monospace;
+            white-space: pre;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.4);
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin: 8px 0 4px 0;
+        }
+        .options label {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 8px 16px 8px 12px;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: 0.15s;
+            font-size: 15px;
+            border: 1.5px solid transparent;
+            background: rgba(255, 248, 225, 0.3);
+        }
+        .options label:hover {
+            background: rgba(212, 175, 55, 0.08);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+        .options input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #b8860b;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        /* ---------- Feedback ---------- */
+        .q-feedback {
+            margin-top: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 6px 18px;
+            border-radius: 40px;
+            display: none;
+            border: 1px solid transparent;
+        }
+        .q-feedback.show {
+            display: inline-block;
+        }
+        .q-feedback.correct {
+            background: #dcfce7;
+            color: #166534;
+            border-color: #86efac;
+        }
+        .q-feedback.wrong {
+            background: #fee2e2;
+            color: #991b1b;
+            border-color: #fca5a5;
+        }
+        .q-feedback .correct-answer {
+            font-weight: 700;
+            color: #0f3b5e;
+        }
+
+        /* ---------- Actions ---------- */
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px 20px;
+            align-items: center;
+            margin: 28px 0 16px;
+            padding-top: 20px;
+            border-top: 2px solid rgba(212, 175, 55, 0.2);
+        }
+        .btn {
+            border: none;
+            font-weight: 600;
+            font-size: 15px;
+            padding: 12px 38px;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: 0.2s cubic-bezier(0.2, 0.9, 0.4, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: #5a3e0b;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        .btn:hover {
+            transform: translateY(-2px) scale(0.98);
+            box-shadow: 0 12px 30px rgba(184, 134, 11, 0.15);
+        }
+        .btn-success {
+            background: linear-gradient(135deg, #d4af37, #b8860b);
+            color: white;
+            border: none;
+            box-shadow: 0 8px 24px rgba(184, 134, 11, 0.35);
+        }
+        .btn-success:hover {
+            background: linear-gradient(135deg, #c9a04e, #a67c00);
+            box-shadow: 0 12px 32px rgba(184, 134, 11, 0.45);
+        }
+        .btn-outline {
+            background: rgba(255, 248, 230, 0.7);
+            backdrop-filter: blur(4px);
+            border: 1.5px solid #b8860b;
+            color: #8b6508;
+        }
+        .btn-outline:hover {
+            background: #b8860b;
+            color: white;
+            border-color: #b8860b;
+        }
+        .score-box {
+            font-weight: 600;
+            font-size: 17px;
+            background: rgba(255, 248, 230, 0.7);
+            backdrop-filter: blur(4px);
+            padding: 8px 30px;
+            border-radius: 60px;
+            margin-left: auto;
+            border: 1.5px solid rgba(212, 175, 55, 0.4);
+            white-space: nowrap;
+            color: #5a3e0b;
+        }
+        .score-box .num {
+            color: #b8860b;
+            font-weight: 700;
+        }
+        .score-box .num-answered {
+            color: #5a3e0b;
+            font-weight: 600;
+        }
+
+        .reset-area {
+            margin-top: 6px;
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .reset-area .btn {
+            font-size: 13px;
+            padding: 8px 24px;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 13px;
+            color: #b09a70;
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+            padding-top: 20px;
+        }
+
+        @media (max-width: 680px) {
+            .app {
+                padding: 16px 14px 24px;
+                border-radius: 28px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            .question-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 16px 14px 14px;
+            }
+            .icon-3d-wrapper {
+                width: 72px;
+                height: 72px;
+            }
+            .q-top-row {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .options label {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+            .tabs .tab-btn {
+                font-size: 12px;
+                padding: 6px 16px;
+            }
+            .actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .score-box {
+                margin-left: 0;
+                text-align: center;
+            }
+            .btn {
+                justify-content: center;
+                padding: 12px 20px;
+            }
+            .brand-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .brand-text h2 {
+                font-size: 20px;
+            }
+            .logo-placeholder {
+                width: 64px;
+                height: 64px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app" id="app">
+
+        <!-- Brand Header with Logo Image -->
+        <div class="brand-header">
+            <div class="logo-placeholder">
+                <img src="logo1.png" alt="House of J&S Logo" />
+            </div>
+            <div class="brand-text">
+                <h2>🏫 House of J&S</h2>
+                <small>Computer Training Center · Digital Technology</small>
+            </div>
+        </div>
+
+        <h1>
+            📘 Digital Technology
+            <small>Sample Tests · All Levels</small>
+            <span class="badge-total" id="totalBadge">0 questions</span>
+            <span class="submitted-badge" id="submittedBadge">✅ Submitted</span>
+        </h1>
+
+        <div class="tabs" id="tabsContainer"></div>
+
+        <div class="quiz-container">
+            <div class="tab-content" id="quizContent"></div>
+
+            <div class="actions">
+                <button class="btn btn-success" id="checkBtn">✅ Submit All & Check</button>
+                <button class="btn btn-outline" id="resetBtn">↻ Reset Current</button>
+                <div class="score-box" id="scoreBox">
+                    <span id="scoreLabel">Answered</span>: <span class="num-answered" id="scoreDisplay">0</span> / <span id="totalDisplay">0</span>
+                </div>
+            </div>
+            <div class="reset-area">
+                <button class="btn btn-outline" id="clearAllBtn" style="font-size:13px; padding:6px 20px;">✕ Clear All Selections</button>
+            </div>
+        </div>
+
+        <div class="footer">
+            ⚡ Submit to check all answers · Click a grade tab to switch · 175 questions total
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        //  DATA — All 7 levels (175 total)
+        // ============================================================
+        const LEVELS = [{
+            id: 'kg',
+            label: 'KG',
+            questions: [
+                { id: 1, q: 'What is the main purpose of a computer?', opts: ['A device used for playing only', 'A machine that helps us work, learn, and have fun', 'Something we eat for energy', 'A tool for transportation'], ans: 'B' },
+                { id: 2, q: 'What can we do with a computer?', opts: ['Eat lunch', 'Watch cartoons and play games', 'Sleep', 'Swim'], ans: 'B' },
+                { id: 3, q: 'What is a computer used for at school?', opts: ['To play outside', 'To learn new things and watch videos', 'To take naps', 'To eat food'], ans: 'B' },
+                { id: 4, q: 'What can you watch on a computer?', opts: ['Cartoons', 'Animals', 'Toys', 'Trees'], ans: 'A' },
+                { id: 5, q: 'What device do we use to type on a computer?', opts: ['Monitor', 'Mouse', 'Keyboard', 'Speaker'], ans: 'C' },
+                { id: 6, q: 'What part of the computer shows pictures and videos?', opts: ['Keyboard', 'Monitor', 'Mouse', 'Speaker'], ans: 'B' },
+                { id: 7, q: 'What device do we use to select and click on items?', opts: ['Keyboard', 'Mouse', 'Monitor', 'Speaker'], ans: 'B' },
+                { id: 8, q: 'What does the monitor show us?', opts: ['Numbers', 'Pictures and videos', 'Letters only', 'Songs'], ans: 'B' },
+                { id: 9, q: 'What part makes sounds from the computer?', opts: ['Monitor', 'Keyboard', 'Mouse', 'Speaker'], ans: 'D' },
+                { id: 10, q: 'How do we turn the computer on?', opts: ['By clicking the mouse', 'By pressing the keyboard', 'By pressing the power button', 'By turning off the monitor'], ans: 'C' },
+                { id: 11, q: 'What can we do with the keyboard?', opts: ['Watch cartoons', 'Play games', 'Type letters and numbers', 'Turn off the computer'], ans: 'C' },
+                { id: 12, q: 'What can you do in MS Paint?', opts: ['Type words', 'Draw pictures', 'Watch videos', 'Play games'], ans: 'B' },
+                { id: 13, q: 'What can you do with Notepad on the computer?', opts: ['Draw pictures.', 'Type words and save them', 'Watch cartoons', 'Play music'], ans: 'B' },
+                { id: 14, q: 'What part of the computer helps us listen to sounds?', opts: ['Monitor', 'Mouse', 'Keyboard', 'Speaker'], ans: 'D' },
+                { id: 15, q: 'What tool in MS Paint lets you color your picture?', opts: ['Line tool', 'Color palette', 'Eraser', 'Brush tool'], ans: 'B' },
+                { id: 16, q: 'How do you add text to your drawing in MS Paint?', opts: ['By clicking the "Text" tool', 'By using the brush tool', 'By clicking the "Color" tool', 'By drawing with a pencil'], ans: 'A' },
+                { id: 17, q: 'How do you open Notepad to type?', opts: ['By clicking the "Paint" icon', 'By clicking the "Notepad" icon', 'By clicking the "Word" icon', 'By clicking the "Music" icon'], ans: 'B' },
+                { id: 18, q: 'Why do we use printer?', opts: ['To type letters', 'To print on a paper', 'to watch videos', 'To play music'], ans: 'B' },
+                { id: 19, q: 'How can you make your text bigger in Notepad?', opts: ['By pressing the "Enter" key', 'By clicking the "Font" option', 'By drawing', 'By clicking "Save"'], ans: 'B' },
+                { id: 20, q: 'What do you use to erase a mistake in MS Paint?', opts: ['Line tool', 'Eraser tool', 'Text tool', 'Paintbrush tool'], ans: 'B' },
+                { id: 21, q: 'What do you do after typing your text in Notepad?', opts: ['Close the computer', 'Save the file', 'Print the text', 'Delete the file'], ans: 'B' },
+                { id: 22, q: 'How do we turn off the computer?', opts: ['By clicking the mouse', 'By pressing the keyboard', 'By pressing the power button', 'By clicking "Turn Off"'], ans: 'C' },
+                { id: 23, q: 'How does a computer help us with art and creativity?', opts: ['It can help you draw and create art', 'It can make you breakfast', 'It can help you clean your room', 'It can sing songs'], ans: 'A' },
+                { id: 24, q: 'What do we use to move the pointer around the screen?', opts: ['Keyboard', 'Mouse', 'Monitor', 'Speaker'], ans: 'B' },
+                { id: 25, q: 'What can you do with a computer besides playing games?', opts: ['Watch videos and learn new things', 'Sleep', 'Play outside', 'Eat'], ans: 'A' }
+            ]
+        }, {
+            id: 'g1-2',
+            label: 'Grades 1-2',
+            questions: [
+                { id: 1, q: 'What can we do with a computer?', opts: ['Take a nap', 'Watch videos and learn new things', 'Play outdoor games', 'Eat snacks'], ans: 'B' },
+                { id: 2, q: 'What part of the computer do you use to type?', opts: ['Mouse', 'Monitor', 'Keyboard', 'Speaker'], ans: 'C' },
+                { id: 3, q: 'What part of the computer shows pictures and videos?', opts: ['Monitor', 'Keyboard', 'Mouse', 'Speaker'], ans: 'A' },
+                { id: 4, q: 'What part of the computer helps us click on things?', opts: ['Mouse', 'Monitor', 'Keyboard', 'Speaker'], ans: 'A' },
+                { id: 5, q: 'What does the CPU do?', opts: ['It shows images on the screen.', 'It acts as the brain of the computer and manages everything.', 'It plays sound through speakers.', 'It helps move the mouse.'], ans: 'B' },
+                { id: 6, q: 'How do we turn on the computer?', opts: ['By clicking the mouse', 'By pressing the keyboard', 'By pressing the power button', 'By turning off the monitor'], ans: 'C' },
+                { id: 7, q: 'Which of the following is a smart machine?', opts: ['Table', 'Computer', 'Chair', 'Book'], ans: 'B' },
+                { id: 8, q: 'What do you use in MS Paint to draw a straight line?', opts: ['Brush tool', 'Eraser tool', 'Line tool', 'Color palette'], ans: 'C' },
+                { id: 9, q: 'Click the activities that you cannot do on a computer.', opts: ['Play games', 'Watch videos', 'Eat lunch', 'Draw pictures'], ans: 'C' },
+                { id: 10, q: 'Which type of computer is big and usually stays on a desk?', opts: ['Laptop', 'Tablet', 'Desktop', 'Mobile phone'], ans: 'C' },
+                { id: 11, q: 'The part of the computer that we use to listen to music', opts: ['Monitor', 'Keyboard', 'Mouse', 'Speaker'], ans: 'D' },
+                { id: 12, q: 'Which computer can be used by holding it in your hands like a book?', opts: ['Desktop', 'Laptop', 'Tablet', 'Printer'], ans: 'C' },
+                { id: 13, q: 'How do you change the size of the text in WordPad?', opts: ['By clicking the "Undo" button', 'By using the "Font" size option', 'By pressing the space bar', 'By clicking "Save"'], ans: 'B' },
+                { id: 14, q: 'How many buttons does the mouse have?', opts: ['1', '2', '3', '4'], ans: 'B' },
+                { id: 15, q: 'What happens to RAM when the computer is shut down?', opts: ["It's saved in the users documents files", "It's saved in the computers' data", "It's deleted", "It's synced automatically with the cloud."], ans: 'C' },
+                { id: 16, q: 'Which type of computer can be carried around easily and works on your lap?', opts: ['Desktop', 'Laptop', 'Tablet', 'Television'], ans: 'B' },
+                { id: 17, q: 'What is the primary function of the Backspace key?', opts: ['To delete text to the right of the cursor', 'To delete text to the left of the cursor', 'To move the cursor to the next line', 'To capitalize letters'], ans: 'B' },
+                { id: 18, q: 'What is the primary function of the Enter key?', opts: ['To delete text', 'To move the cursor to the next line or start a new paragraph', 'To close a document', 'To capitalize letters'], ans: 'B' },
+                { id: 19, q: 'Which of the following is true about the Spacebar key?', opts: ['It is the smallest key on the keyboard.', 'It is used to add spaces between letters or words.', 'It functions the same as the Backspace key.', 'It moves the cursor up one line.'], ans: 'B' },
+                { id: 20, q: 'Which key is used to type capital letter?', opts: ['Caps Lock', 'Delete', 'Spacebar', 'Enter'], ans: 'A' },
+                { id: 21, q: 'Which one of the following is not a function of the control unit?', opts: ['Fetches instructions from memory', 'Decodes instructions', 'Processes instructions', 'Fetches data for required instructions.'], ans: 'C' },
+                { id: 22, q: 'The speed at which a CPU processes data is measured in:', opts: ['megabytes.', 'gigahertz.', 'gigabytes.', 'terabytes.'], ans: 'B' },
+                { id: 23, q: 'What is this? (Wi‑Fi icon)', opts: ['Search engine', 'Wi‑Fi', 'Download', 'Upload'], ans: 'B', icon: 'wifi' },
+                { id: 24, q: 'The main memory of a computer is also referred to as:', opts: ['immediate access store.', 'auxiliary storage', 'secondary storage', 'backup storage'], ans: 'A' },
+                { id: 25, q: 'Which of the following is an example of technology use in the home?', opts: ['Keeping track of student progress.', 'Entertainment', 'Greater collaboration', 'Enhanced productivity'], ans: 'B' }
+            ]
+        }, {
+            id: 'g3-4',
+            label: 'Grades 3-4',
+            questions: [
+                { id: 1, q: 'Which of the following best describes the CPU?', opts: ['It is the "brain" of the computer that processes information.', 'It stores all files and data permanently.', 'It connects input and output devices.', 'It protects the computer from viruses.'], ans: 'A' },
+                { id: 2, q: 'What type of software is used to operate a computer?', opts: ['Application Software', 'Operating System Software', 'Gaming Software', 'Security Software'], ans: 'B' },
+                { id: 3, q: 'What is the difference between hardware and software?', opts: ['Hardware is invisible, software is physical.', 'Hardware and software are the same.', 'Hardware is cheaper than software.', 'Hardware is the physical part, software is the instructions that run on it.'], ans: 'D' },
+                { id: 4, q: 'When was the first personal computer introduced?', opts: ['1940s', '1950s', '1970s', '1990s'], ans: 'C' },
+                { id: 5, q: 'What is the Start Menu in Windows 11 used for?', opts: ['To turn off the computer', 'To access applications, settings, and files', 'To open the internet browser directly', 'To close all programs at once'], ans: 'B' },
+                { id: 6, q: 'In MS Paint, which tool is used to fill an area with color?', opts: ['Pencil Tool', 'Eraser Tool', 'Fill Tool', 'Text Tool'], ans: 'C' },
+                { id: 7, q: 'Which key do you press to start a new line in MS Word or WordPad?', opts: ['Spacebar', 'Enter', 'Tab', 'Backspace'], ans: 'B' },
+                { id: 8, q: 'What is a web browser used for?', opts: ['To create documents', 'To search and view websites on the internet', 'To store files', 'To draw pictures'], ans: 'B' },
+                { id: 9, q: 'Which of the following is NOT safe to do online?', opts: ['Visit trusted websites', 'Share your personal information with strangers', 'Use strong passwords', 'Report suspicious activities'], ans: 'B' },
+                { id: 10, q: 'What is the purpose of an address bar in a web browser?', opts: ['To draw pictures', 'To type the URL (website address) of a website', 'To turn off the computer', 'To check emails'], ans: 'B' },
+                { id: 11, q: 'What is the primary purpose of a hard drive?', opts: ['To store data permanently', 'To delete files', 'To connect to the internet', 'To display images on the screen'], ans: 'A' },
+                { id: 12, q: 'What happens to data in RAM when the computer is turned off?', opts: ['It is saved permanently.', 'It is deleted or lost.', 'It is copied to the hard drive automatically.', 'It is sent to cloud storage.'], ans: 'B' },
+                { id: 13, q: 'What is John von Neumann best known for in computers?', opts: ['Inventing the internet', 'Designing the first computer mouse', 'Developing the concept of stored-program computers', 'Creating video games'], ans: 'C' },
+                { id: 14, q: 'How are modern computers different from early computers?', opts: ['Modern computers are larger and slower.', 'Modern computers are smaller and faster.', 'Modern computers do not need electricity.', 'Modern computers cannot store data.'], ans: 'B' },
+                { id: 15, q: 'In which generation of computers were microprocessors introduced?', opts: ['First generation', 'Second generation', 'Third generation', 'Fourth generation'], ans: 'D' },
+                { id: 16, q: 'Which of these is a common feature of both macOS and Windows?', opts: ['They cannot connect to the internet.', 'They both allow you to open applications and manage files.', 'They are both made by Apple.', 'They do not use keyboards.'], ans: 'B' },
+                { id: 17, q: 'Which operating system is more commonly used in schools and offices?', opts: ['macOS', 'Windows', 'Android', 'Linux'], ans: 'B' },
+                { id: 18, q: 'What is one way computers help us today?', opts: ['They make everything slower.', 'They help people play games and do work.', 'They are only used for school projects.', "They don't store information."], ans: 'B' },
+                { id: 19, q: 'What is the difference between RAM and a hard drive?', opts: ['RAM is used for storing data permanently, while a hard drive stores temporary data.', 'RAM is temporary memory, while a hard drive stores data permanently.', 'RAM is slower than a hard drive.', 'There is no difference; they are the same.'], ans: 'B' },
+                { id: 20, q: 'Which of the following is an example of a programming language?', opts: ['Scratch', 'Python', 'Java', 'All of the above'], ans: 'D' },
+                { id: 21, q: 'In Scratch, what are the blocks used for?', opts: ['To draw pictures', 'To create programs by snapping them together', 'To store files', 'To browse the internet'], ans: 'B' },
+                { id: 22, q: 'Why do computers use both RAM and storage devices like hard drives or SSDs?', opts: ['RAM is for speed and temporary tasks, while storage is for saving data permanently.', 'RAM is cheaper, so it stores everything.', 'Hard drives are faster than RAM.', 'Computers only need one type of memory.'], ans: 'A' },
+                { id: 23, q: 'What is a common size for cloud storage plans offered by services like Google Drive?', opts: ['1 GB', '15 GB', '100 KB', '1 TB'], ans: 'B' },
+                { id: 24, q: 'What is the result of this program?', opts: ['x=5 y=24', 'Error', 'Nothing', 'x=24 y=5'], ans: 'A', code: 'CLS\nx = 5\ny = 24\nPRINT "The value of x is: "; x\nPRINT "The value of y is: "; y' },
+                { id: 25, q: 'How many kilobytes (KB) are there in 1 megabyte (MB)?', opts: ['512 KB', '1024 KB', '2048 KB', '1000 KB'], ans: 'B' }
+            ]
+        }, {
+            id: 'g5-6',
+            label: 'Grades 5-6',
+            questions: [
+                { id: 1, q: 'What is the main purpose of a motherboard?', opts: ['To store files', 'To connect and allow communication between all components', 'To display images on the screen', 'To provide internet access'], ans: 'B' },
+                { id: 2, q: 'What is the most common input device for typing?', opts: ['Mouse', 'Keyboard', 'Printer', 'Monitor'], ans: 'B' },
+                { id: 3, q: 'What does the term "binary" mean in computers?', opts: ["A computer's language that uses only two numbers: 0 and 1", 'A programming language', 'A type of computer storage', 'A type of virus'], ans: 'A' },
+                { id: 4, q: 'What is the main purpose of a graphics card?', opts: ['To display and process visual data', 'To store files', 'To improve internet speed', 'To play music'], ans: 'A' },
+                { id: 5, q: 'What is the primary function of the CPU?', opts: ['To display images on the screen', 'To process instructions and manage tasks', 'To store data permanently', 'To connect peripherals'], ans: 'B' },
+                { id: 6, q: 'Which tab in MS Word is used to insert a table?', opts: ['Home', 'Insert', 'Layout', 'Review'], ans: 'B' },
+                { id: 7, q: 'How do you insert a new slide into a PowerPoint presentation?', opts: ['Go to Insert → Slide', 'Right-click in the slide pane and select "New Slide"', 'Press Ctrl + M', 'All of the above'], ans: 'D' },
+                { id: 8, q: 'Which symbol is used to start a formula in Excel?', opts: ['=', '+', '*', '/'], ans: 'A' },
+                { id: 9, q: 'What is the intersection of a row and a column in Excel called?', opts: ['Cell', 'Box', 'Field', 'Range'], ans: 'A' },
+                { id: 10, q: 'Which of these objects can be inserted into an MS Word document?', opts: ['Tables', 'Pictures', 'Shapes', 'All of the above'], ans: 'D' },
+                { id: 11, q: 'What is the primary function of the taskbar in Windows?', opts: ['To display the start menu', 'To show open programs and provide quick access to frequently used applications', 'To manage system settings', 'To close applications'], ans: 'B' },
+                { id: 12, q: 'Which Windows feature allows you to switch between multiple open applications?', opts: ['Alt + Tab', 'Ctrl + Shift', 'F5', 'Shift + Tab'], ans: 'A' },
+                { id: 13, q: 'What is the function of the "Snipping Tool" in Windows?', opts: ['To edit images', 'To take screenshots of specific parts of the screen', 'To create new folders', 'To draw shapes on documents'], ans: 'B' },
+                { id: 14, q: 'Which of the following is the largest unit of storage?', opts: ['Kilobyte', 'Gigabyte', 'Megabyte', 'Terabyte'], ans: 'D' },
+                { id: 15, q: 'Which of the following is an example of cloud storage?', opts: ['SSD', 'Google Drive', 'External Hard Drive', 'DVD'], ans: 'B' },
+                { id: 16, q: 'Which type of memory retains data even when the computer is turned off?', opts: ['RAM', 'Cache', 'ROM', 'Registers'], ans: 'C' },
+                { id: 17, q: 'Which of the following is considered secondary storage?', opts: ['RAM', 'ROM', 'Hard Disk Drive', 'Cache Memory'], ans: 'C' },
+                { id: 18, q: 'Which unit is used to measure the storage capacity of memory devices?', opts: ['Hertz', 'Pixels', 'Bytes', 'Amperes'], ans: 'C' },
+                { id: 19, q: 'What is the purpose of cache memory?', opts: ['To store data permanently', 'To provide faster access to frequently used data', 'To store operating system files', 'To store graphics and videos'], ans: 'B' },
+                { id: 20, q: 'What will the following code output? PRINT 5 + 3 * 2', opts: ['11', '16', '10', '13'], ans: 'A' },
+                { id: 21, q: 'Which statement in Programming is used to create a decision structure?', opts: ['WHILE', 'IF...THEN', 'LOOP', 'CASE'], ans: 'B' },
+                { id: 22, q: 'What will the following code output?', opts: ['1,2,3,4,5', '12345', '12345', '54321'], ans: 'A', code: 'FOR I = 1 TO 5\n    PRINT I\nNEXT I' },
+                { id: 23, q: 'What is the function of the BIOS in a computer?', opts: ['To execute the operating system', 'To manage network connections', 'To initialize hardware during startup', 'To control the printer'], ans: 'C' },
+                { id: 24, q: 'What does the term "volatile memory" mean?', opts: ['Memory that can only be read and not written', 'Memory that is erased when the computer is powered off', 'Memory that is permanently stored', 'Memory that is used for external devices'], ans: 'B' },
+                { id: 25, q: 'Which file extension indicates a Windows system file?', opts: ['.exe', '.dll', '.jpg', '.docx'], ans: 'B' }
+            ]
+        }, {
+            id: 'g7-8',
+            label: 'Grades 7-8',
+            questions: [
+                { id: 1, q: 'Which of these is NOT a valid way to shut down a Windows computer?', opts: ['Pressing the power button', 'Using the Start menu > Power > Shut Down', 'Using Alt + F4 from the desktop', 'Deleting the "System32" folder'], ans: 'D' },
+                { id: 2, q: 'What is the function of the "Clipboard" in Windows?', opts: ['Stores copied or cut text and images temporarily', 'Manages installed software', 'Encrypts files for security', 'Displays notifications'], ans: 'A' },
+                { id: 3, q: 'What does the CLS command do in QBasic?', opts: ['Clears the screen', 'Closes the program', 'Saves the program', 'Stops the program execution'], ans: 'A' },
+                { id: 4, q: 'Which shortcut key combination applies bold formatting to selected text in MS Word?', opts: ['Ctrl + U', 'Ctrl + I', 'Ctrl + B', 'Ctrl + P'], ans: 'C' },
+                { id: 5, q: 'In PowerPoint, which file extension is used to save a presentation with macros?', opts: ['.pptx', '.potx', '.pptm', '.ppss'], ans: 'C' },
+                { id: 6, q: 'What is the difference between a LAN and a WAN?', opts: ['LAN is wireless, and WAN is wired', 'LAN is smaller in area, while WAN spans a larger area', 'LAN is faster than WAN', 'LAN uses public networks, while WAN uses private networks'], ans: 'B' },
+                { id: 7, q: 'Which of the following is an example of structured data?', opts: ['Images', 'Text documents', 'Spreadsheet data', 'Videos'], ans: 'C' },
+                { id: 8, q: 'What does the acronym URL stand for?', opts: ['Universal Resource Locator', 'Uniform Resource Locator', 'Unified Resource Link', 'Universal Retrieval Locator'], ans: 'B' },
+                { id: 9, q: 'Which file format is commonly used for storing audio files?', opts: ['.mp3', '.docx', '.jpeg', '.png'], ans: 'A' },
+                { id: 10, q: 'What is the main characteristic of ROM?', opts: ['It is volatile and stores temporary data', 'It is non-volatile and stores permanent instructions', 'It is faster than RAM', 'It is used to store multimedia files'], ans: 'B' },
+                { id: 11, q: 'Which of the following is used to adjust the screen resolution in Windows?', opts: ['File Explorer', 'Display Settings', 'Device Manager', 'Control Panel'], ans: 'B' },
+                { id: 12, q: 'In Excel, which tool is used to insert a chart?', opts: ['Home Tab', 'Insert Tab', 'Data Tab', 'Review Tab'], ans: 'B' },
+                { id: 13, q: 'How does QBasic represent true and false in logical operations?', opts: ['1 for true and 0 for false', 'TRUE and FALSE', 'T and F', 'On and Off'], ans: 'A' },
+                { id: 14, q: 'Which of the following is an example of a WAN?', opts: ['A school network', 'The Internet', 'A home network', 'A Bluetooth connection'], ans: 'B' },
+                { id: 15, q: 'What does the "Disk Cleanup" tool do?', opts: ['Defragments the hard drive', 'Deletes unnecessary files to free up space', 'Optimizes application performance', 'Creates backups of files'], ans: 'B' },
+                { id: 16, q: 'What is the output of the following QBasic code?', opts: ['It prints "Hello"', 'It prints "World"', 'It prints "Hello World"', 'Error'], ans: 'C', code: 'PRINT "Hello World"' },
+                { id: 17, q: 'What is the purpose of data compression?', opts: ['To secure data against theft', 'To reduce the size of data files', 'To delete unnecessary files', 'To speed up the CPU'], ans: 'B' },
+                { id: 18, q: 'How can you insert a video into a PowerPoint slide?', opts: ['Home > Add Video', 'Insert > Video', 'Design > Media', 'File > Import Video'], ans: 'B' },
+                { id: 19, q: 'Which unit is used to measure the size of digital data?', opts: ['Pixels', 'Hertz', 'Bytes', 'Decibels'], ans: 'C' },
+                { id: 20, q: 'What is the purpose of a firewall in a computer network?', opts: ['To increase internet speed', 'To filter and block unauthorized access', 'To scan for viruses', 'To encrypt data'], ans: 'B' },
+                { id: 21, q: 'Which of these tools is used to manage storage drives in Windows?', opts: ['Disk Cleanup', 'Disk Management', 'Device Manager', 'System Restore'], ans: 'B' },
+                { id: 22, q: 'Which protocol is used for sending emails?', opts: ['HTTP', 'FTP', 'SMTP', 'IMAP'], ans: 'C' },
+                { id: 23, q: 'What is the purpose of the "Slide Transition" feature in PowerPoint?', opts: ['To add motion effects to objects on a slide', 'To add visual effects when moving from one slide to the next', 'To apply background colors to slides', 'To align text in a slide'], ans: 'B' },
+                { id: 24, q: 'What will the following QBasic code do? (nested loops)', opts: ['Display numbers from 1 to 6', 'Display multiplication tables for 1 to 3', 'Display numbers from 1 to 3', 'Display an error'], ans: 'B', code: 'FOR I = 1 TO 3\n    FOR J = 1 TO 3\n        PRINT I * J\n    NEXT J\nNEXT I' },
+                { id: 25, q: 'What is the function of a primary key in a database?', opts: ['To link tables together', 'To uniquely identify each record in a table', 'To store multimedia files', 'To act as a backup for the database'], ans: 'B' }
+            ]
+        }, {
+            id: 'g9-10',
+            label: 'Grades 9-10',
+            questions: [
+                { id: 1, q: 'What does the IF function do in Excel?', opts: ['Performs a logical test and returns one value for TRUE and another for FALSE', 'Combines text from multiple cells', 'Sorts data in ascending order', 'Creates a chart based on data'], ans: 'A' },
+                { id: 2, q: 'What is the function of an IP address?', opts: ['To store user data', 'To uniquely identify devices on a network', 'To translate domain names into URLs', 'To encrypt data on a network'], ans: 'B' },
+                { id: 3, q: 'How can you create a mail merge in MS Word?', opts: ['Insert > Merge Documents', 'Layout > Create Merge', 'References > Mail Merge', 'Mailings > Start Mail Merge'], ans: 'D' },
+                { id: 4, q: 'Which shortcut starts a slideshow from the beginning?', opts: ['Shift + F5', 'F5', 'Alt + F5', 'Ctrl + F5'], ans: 'B' },
+                { id: 5, q: 'Which tag is used to define the largest heading in HTML?', opts: ['<h1>', '<head>', '<h6>', '<title>'], ans: 'A' },
+                { id: 6, q: 'Which of the following is an example of a Wide Area Network (WAN)?', opts: ['A school computer lab network', 'A Bluetooth connection', 'A home Wi-Fi network', 'The Internet'], ans: 'D' },
+                { id: 7, q: 'What is "phishing"?', opts: ['Attempting to steal sensitive information through deceptive emails or websites', 'Encrypting data for security', 'Blocking unauthorized network access', 'Creating a secure password'], ans: 'A' },
+                { id: 8, q: 'What is the default file format for an MS Access database?', opts: ['.mdb', '.accdb', '.dbf', '.xls'], ans: 'B' },
+                { id: 9, q: 'What will the following QBasic code output? FOR I = 1 TO 3 PRINT I NEXT I', opts: ['3 2 1', '3', '1 2 3', 'Error'], ans: 'C' },
+                { id: 10, q: 'Which of the following is a type of animation available in Adobe Animate?', opts: ['Frame-by-frame animation', 'Motion Tween', 'Shape Tween', 'All of the above'], ans: 'D' },
+                { id: 11, q: 'Which Excel function is used to count the number of cells that meet a certain condition?', opts: ['=COUNT', '=COUNTIF', '=SUMIF', '=IFCOUNT'], ans: 'B' },
+                { id: 12, q: 'What is the significance of the year 1991 in internet history?', opts: ['The first email was sent', 'The first search engine was developed', 'The World Wide Web became publicly available', 'The TCP/IP protocol was introduced'], ans: 'C' },
+                { id: 13, q: 'What is the purpose of the <title> tag in an HTML document?', opts: ["To define the document's main heading", 'To set the page title displayed in the browser tab', 'To create a hyperlink', 'To apply a theme to the document'], ans: 'B' },
+                { id: 14, q: 'What is a "Trojan horse" in cybersecurity?', opts: ['A malicious program disguised as legitimate software', 'A type of encrypted communication protocol', 'A method of detecting malware', 'A tool for securing networks'], ans: 'A' },
+                { id: 15, q: 'What is the purpose of a relationship in MS Access?', opts: ['To set security options', 'To create a new table', 'To format table fields', 'To link data between two or more tables'], ans: 'D' },
+                { id: 16, q: 'What is the purpose of the "Slide Master" in PowerPoint?', opts: ['To create animations', 'To set a consistent design and layout across slides', 'To duplicate slides', 'To create charts'], ans: 'B' },
+                { id: 17, q: 'Which attribute is used to add a hyperlink to an anchor tag (<a>)?', opts: ['href', 'link', 'src', 'target'], ans: 'A' },
+                { id: 18, q: 'Which protocol is primarily used to send web pages over the internet?', opts: ['FTP', 'HTTP', 'SMTP', 'DNS'], ans: 'B' },
+                { id: 19, q: 'What is the purpose of a Pivot Table in Excel?', opts: ['To insert graphics', 'To organize and summarize large amounts of data', 'To format data automatically', 'To calculate simple averages'], ans: 'B' },
+                { id: 20, q: 'What is CSS primarily used for in web development?', opts: ['Adding interactivity to web pages', 'Structuring web page content', 'Styling and designing web pages', 'Securing web pages from attacks'], ans: 'C' },
+                { id: 21, q: 'Which of the following is a valid relationship type in MS Access?', opts: ['One-to-One', 'One-to-Many', 'Many-to-Many', 'All of the above'], ans: 'D' },
+                { id: 22, q: 'What is the purpose of cyber laws?', opts: ['To enhance internet speed', 'To regulate online activities and protect users from cyber-crimes', 'To manage network configurations', 'To teach programming skills'], ans: 'B' },
+                { id: 23, q: 'What does the following code do? (sound loop)', opts: ['Plays alternating sounds at 500 Hz and 700 Hz five times', 'Plays a continuous sound', 'Displays an error', 'Plays a single sound at 500 Hz'], ans: 'A', code: 'FOR I = 1 TO 5\n    SOUND 500, 10\n    SOUND 700, 10\nNEXT I' },
+                { id: 24, q: 'What should you do if you become a victim of a cyber-crime?', opts: ['Ignore the issue and move on', 'Report it to the relevant authorities immediately', "Change your device's background color", 'Format your computer without backup'], ans: 'B' },
+                { id: 25, q: 'Which MS Word feature is used to restrict editing in a document?', opts: ['Review > Restrict Editing', 'File > Protect Document', 'Home > Permissions', 'View > Lock Document'], ans: 'A' }
+            ]
+        }, {
+            id: 'g11-12',
+            label: 'Grades 11-12',
+            questions: [
+                { id: 1, q: 'What is the function of the Control Unit (CU) in a computer?', opts: ['Perform arithmetic calculations', 'Decode instructions and direct operations', 'Store data permanently', 'Execute machine language programs'], ans: 'B' },
+                { id: 2, q: 'Who is credited with designing the first mechanical computer?', opts: ['Charles Babbage', 'Alan Turing', 'John von Neumann', 'Blaise Pascal'], ans: 'A' },
+                { id: 3, q: 'What was the first widely used operating system for personal computers?', opts: ['Windows 95', 'Mac OS', 'MS-DOS', 'Linux'], ans: 'C' },
+                { id: 4, q: 'In VB, which control is used to accept multiple lines of text input?', opts: ['TextBox', 'RichTextBox', 'MultilineBox', 'MemoField'], ans: 'B' },
+                { id: 5, q: 'What is the correct syntax to declare an integer variable in C++?', opts: ['int variable;', 'integer variable;', 'num variable;', 'var variable;'], ans: 'A' },
+                { id: 6, q: 'Which MS Word feature can be used to create a mail merge for sending personalized letters?', opts: ['Mailings > Start Mail Merge', 'Insert > Merge Documents', 'References > Mail Merge Wizard', 'Layout > Create Merge'], ans: 'A' },
+                { id: 7, q: 'What is the primary purpose of MS FrontPage?', opts: ['Creating spreadsheets', 'Designing and managing websites', 'Editing videos', 'Writing programming code'], ans: 'B' },
+                { id: 8, q: 'How do you apply conditional formatting in Excel?', opts: ['Select cells > Home > Conditional Formatting', 'Insert > Format Rules', 'Data > Apply Formatting', 'Page Layout > Style Settings'], ans: 'A' },
+                { id: 9, q: 'How can you create a hyperlink in PowerPoint?', opts: ['Insert > Hyperlink', 'File > Create Link', 'Tools > Hyperlink Editor', 'Design > Insert Link'], ans: 'A' },
+                { id: 10, q: 'What is the function of the Clone Stamp Tool in Adobe Photoshop?', opts: ['To copy and paste objects', 'To duplicate an area of an image using a brush', 'To crop an image', 'To create text layers'], ans: 'B' },
+                { id: 11, q: 'What is the primary purpose of a primary key in a database?', opts: ['To store the largest data value', 'To uniquely identify each record in a table', 'To link two tables together', 'To allow duplicate entries in a table'], ans: 'B' },
+                { id: 12, q: 'Which device is used to connect multiple networks and route data packets between them?', opts: ['Switch', 'Router', 'Hub', 'Modem'], ans: 'B' },
+                { id: 13, q: 'How does IT impact educational institutions?', opts: ['Reduces the need for collaboration', 'Enables online learning and access to global resources', 'Limits access to information', 'Replaces traditional classrooms entirely'], ans: 'B' },
+                { id: 14, q: 'What does HTTP stand for?', opts: ['Hyper Transfer Text Protocol', 'Hyper Text Transfer Protocol', 'High Transmission Text Protocol', 'Hyper Text Transmission Process'], ans: 'B' },
+                { id: 15, q: 'What does a MAC address uniquely identify?', opts: ['A device within a local network', 'An internet protocol version', 'A network topology', 'An operating system'], ans: 'A' },
+                { id: 16, q: 'What is the correct syntax for a for loop in C++?', opts: ['for (int i = 0, i < n, i++) { }', 'for (int i = 0; i < n; i++) { }', 'for (int i = 0; i < n; i++) { }', 'for int i = 0 to n { }'], ans: 'B' },
+                { id: 17, q: 'What does the term "E-commerce" stand for?', opts: ['Efficient Commerce', 'Electronic Commerce', 'Enhanced Commerce', 'Enterprise Commerce'], ans: 'B' },
+                { id: 18, q: 'What is the output of the following C++ code?', opts: ['Value of a: 10', 'Value of a:', 'Value of 10: a', 'Error'], ans: 'A', code: 'int a = 10;\ncout << "Value of a: " << a;' },
+                { id: 19, q: 'What is the primary function of a Database Management System (DBMS)?', opts: ['To manage and organize data efficiently', 'To design webpages', 'To encrypt files for security', 'To speed up internet access'], ans: 'A' },
+                { id: 20, q: 'What is an "API" in the context of e-commerce?', opts: ['Application Programming Interface', 'Advanced Payment Integration', 'Automated Processing Instruction', 'Access Permission Interface'], ans: 'A' },
+                { id: 21, q: 'How do you export an MS Word document to a web-compatible HTML file?', opts: ['File > Save As > Select Web Page', 'File > Export > Web Format', 'Insert > Web Options', 'Design > Save As HTML'], ans: 'A' },
+                { id: 22, q: 'What was the primary purpose of the ENIAC computer?', opts: ['Perform mathematical calculations for military use', 'Manage inventory in businesses', 'Run artificial intelligence programs', 'Process text documents'], ans: 'A' },
+                { id: 23, q: 'What is the output of the following C++ code?', opts: ['Greater', 'Smaller', 'Error', 'None of the above'], ans: 'A', code: 'int a = 5;\nif (a > 3) {\n    cout << "Greater";\n} else {\n    cout << "Smaller";\n}' },
+                { id: 24, q: 'What is the purpose of the Rehearse Timings feature in PowerPoint?', opts: ["To record the presenter's speech", 'To practice and set the timing for each slide', 'To create a dynamic slide transition', 'To export the presentation as a video'], ans: 'B' },
+                { id: 25, q: 'Which tool is used to fill areas with color or patterns in Adobe Photoshop?', opts: ['Paint Bucket Tool', 'Gradient Tool', 'Brush Tool', 'Lasso Tool'], ans: 'A' }
+            ]
+        }];
+
+        // ============================================================
+        //  APP STATE
+        // ============================================================
+        let currentLevel = 'kg';
+        let selections = {};
+        let submitted = false;
+
+        // ============================================================
+        //  3D GOLDEN SVG ICON GENERATOR (Enhanced & Glowing)
+        // ============================================================
+        function get3DSvgForQuestion(q) {
+            const text = q.q.toLowerCase();
+            let type = 'computer';
+            if (text.includes('keyboard') || text.includes('type') || text.includes('backspace') || text.includes('spacebar') || text.includes('enter')) type = 'keyboard';
+            else if (text.includes('mouse') || text.includes('click') || text.includes('pointer')) type = 'mouse';
+            else if (text.includes('speaker') || text.includes('sound') || text.includes('music') || text.includes('listen')) type = 'speaker';
+            else if (text.includes('paint') || text.includes('draw') || text.includes('color') || text.includes('eraser') || text.includes('art')) type = 'paint';
+            else if (text.includes('notepad') || text.includes('wordpad') || text.includes('text') || text.includes('font') || text.includes('save')) type = 'notepad';
+            else if (text.includes('printer') || text.includes('print')) type = 'printer';
+            else if (text.includes('binary') || text.includes('0') && text.includes('1')) type = 'binary';
+            else if (text.includes('hard drive') || text.includes('storage') || text.includes('ram') || text.includes('rom') || text.includes('memory') || text.includes('bytes') || text.includes('kb') || text.includes('mb') || text.includes('gb') || text.includes('tb')) type = 'storage';
+            else if (text.includes('excel') || text.includes('formula') || text.includes('chart') || text.includes('cell') || text.includes('pivot') || text.includes('countif')) type = 'excel';
+            else if (text.includes('powerpoint') || text.includes('slide') || text.includes('presentation') || text.includes('slideshow')) type = 'powerpoint';
+            else if (text.includes('html') || text.includes('css') || text.includes('tag') || text.includes('web') || text.includes('href') || text.includes('url')) type = 'web';
+            else if (text.includes('network') || text.includes('ip') || text.includes('wan') || text.includes('lan') || text.includes('router') || text.includes('protocol') || text.includes('wifi')) type = 'network';
+            else if (text.includes('phishing') || text.includes('virus') || text.includes('trojan') || text.includes('firewall') || text.includes('cyber') || text.includes('email')) type = 'security';
+            else if (text.includes('photoshop') || text.includes('clone stamp') || text.includes('paint bucket')) type = 'photoshop';
+            else if (text.includes('programming') || text.includes('code') || text.includes('variable') || text.includes('syntax') || text.includes('for loop') || text.includes('c++') || text.includes('qbasic') || text.includes('print')) type = 'code';
+            else if (text.includes('database') || text.includes('primary key') || text.includes('dbms') || text.includes('access')) type = 'database';
+            else if (text.includes('e-commerce') || text.includes('api') || text.includes('http')) type = 'ecommerce';
+            else type = 'computer';
+
+            // Golden Gradients
+            const gold1 = 'url(#gGold1)';
+            const gold2 = 'url(#gGold2)';
+            const gold3 = 'url(#gGold3)';
+            const strokeGold = '#b8860b';
+
+            const svgs = {
+                computer: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="8" y="10" width="48" height="34" rx="6" fill="${gold1}" stroke="${strokeGold}" stroke-width="2"/>
+                    <rect x="18" y="16" width="28" height="22" rx="2" fill="${gold2}" stroke="${strokeGold}" stroke-width="1.5"/>
+                    <path d="M26 48 L38 48 L42 54 L22 54 L26 48Z" fill="${gold3}" stroke="${strokeGold}" stroke-width="1.5"/>
+                    <circle cx="32" cy="52" r="2" fill="#8b6508"/>
+                    <defs>
+                        <linearGradient id="gGold1" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#fdf0b0"/><stop offset="100%" stop-color="#b8860b"/></linearGradient>
+                        <linearGradient id="gGold2" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#fff8dc"/><stop offset="100%" stop-color="#d4af37"/></linearGradient>
+                        <linearGradient id="gGold3" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#d4af37"/><stop offset="100%" stop-color="#8b6508"/></linearGradient>
+                    </defs>
+                </svg>`,
+
+                keyboard: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="6" y="24" width="52" height="28" rx="6" fill="${gold1}" stroke="${strokeGold}" stroke-width="2"/>
+                    <rect x="10" y="28" width="8" height="6" rx="2" fill="${gold2}" stroke="${strokeGold}" stroke-width="1"/>
+                    <rect x="22" y="28" width="8" height="6" rx="2" fill="${gold2}" stroke="${strokeGold}" stroke-width="1"/>
+                    <rect x="34" y="28" width="8" height="6" rx="2" fill="${gold2}" stroke="${strokeGold}" stroke-width="1"/>
+                    <rect x="46" y="28" width="8" height="6" rx="2" fill="${gold2}" stroke="${strokeGold}" stroke-width="1"/>
+                    <rect x="10" y="38" width="8" height="6" rx="2" fill="${gold2}" stroke="${strokeGold}" stroke-width="1"/>
+                    <rect x="22" y="38" width="8" height="6" rx="2" fill="${gold2}" stroke="${strokeGold}" stroke-width="1"/>
+                    <rect x="34" y="38" width="8" height="6" rx="2" fill="${gold2}" stroke="${strokeGold}" stroke-width="1"/>
+                    <rect x="46" y="38" width="8" height="6" rx="2" fill="${gold2}" stroke="${strokeGold}" stroke-width="1"/>
+                    <rect x="16" y="46" width="32" height="6" rx="2" fill="${gold3}" stroke="${strokeGold}" stroke-width="1"/>
+                    <defs>
+                        <linearGradient id="gGold1" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#fdf0b0"/><stop offset="100%" stop-color="#b8860b"/></linearGradient>
+                        <linearGradient id="gGold2" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#fff8dc"/><stop offset="100%" stop-color="#d4af37"/></linearGradient>
+                        <linearGradient id="gGold3" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#d4af37"/><stop offset="100%" stop-color="#8b6508"/></linearGradient>
+                    </defs>
+                </svg>`,
+
+                mouse: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22 14C22 8 26 4 32 4C38 4 42 8 42 14V36C42 44 36 50 32 50C28 50 22 44 22 36V14Z" fill="${gold1}" stroke="${strokeGold}" stroke-width="2"/>
+                    <circle cx="32" cy="20" r="4" fill="${gold2}" stroke="${strokeGold}" stroke-width="1.5"/>
+                    <rect x="30" y="34" width="4" height="10" rx="2" fill="${strokeGold}"/>
+                    <path d="M20 52 L44 52 L40 58 L24 58 L20 52Z" fill="${gold3}" stroke="${strokeGold}" stroke-width="1.5"/>
+                    <defs>
+                        <linearGradient id="gGold1" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#fdf0b0"/><stop offset="100%" stop-color="#b8860b"/></linearGradient>
+                        <linearGradient id="gGold2" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#fff8dc"/><stop offset="100%" stop-color="#d4af37"/></linearGradient>
+                        <linearGradient id="gGold3" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#d4af37"/><stop offset="100%" stop-color="#8b6508"/></linearGradient>
+                    </defs>
+                </svg>`,
+
+                paint: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="32" cy="32" r="20" fill="${gold2}" stroke="${strokeGold}" stroke-width="2"/>
+                    <circle cx="24" cy="24" r="6" fill="#ef4444" stroke="${strokeGold}" stroke-width="1.5"/>
+                    <circle cx="40" cy="24" r="5" fill="#3b82f6" stroke="${strokeGold}" stroke-width="1.5"/>
+                    <circle cx="24" cy="40" r="5" fill="#facc15" stroke="${strokeGold}" stroke-width="1.5"/>
+                    <circle cx="40" cy="40" r="6" fill="#22c55e" stroke="${strokeGold}" stroke-width="1.5"/>
+                    <path d="M42 28 L56 12 L60 16 L46 32 L42 28Z" fill="${gold1}" stroke="${strokeGold}" stroke-width="1.5"/>
+                    <defs>
+                        <linearGradient id="gGold1" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#fdf0b0"/><stop offset="100%" stop-color="#b8860b"/></linearGradient>
+                        <linearGradient id="gGold2" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#fff8dc"/><stop offset="100%" stop-color="#d4af37"/></linearGradient>
+                    </defs>
+                </svg>`,
+
+                code: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="4" y="8" width="56" height="48" rx="8" fill="${gold3}" stroke="${strokeGold}" stroke-width="2"/>
+                    <rect x="12" y="16" width="40" height="8" rx="2" fill="#2a1f0a" opacity="0.5"/>
+                    <rect x="12" y="28" width="40" height="8" rx="2" fill="#2a1f0a" opacity="0.5"/>
+                    <rect x="12" y="40" width="40" height="8" rx="2" fill="#2a1f0a" opacity="0.5"/>
+                    <path d="M20 20 L16 24 L20 28" stroke="#facc15" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    <path d="M44 20 L48 24 L44 28" stroke="#facc15" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    <path d="M28 38 L32 42 L36 38" stroke="#facc15" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="gGold3" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#d4af37"/><stop offset="100%" stop-color="#8b6508"/></linearGradient>
+                    </defs>
+                </svg>`,
+
+                storage: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="32" cy="14" rx="20" ry="8" fill="${gold3}" stroke="${strokeGold}" stroke-width="2"/>
+                    <rect x="12" y="14" width="40" height="32" fill="${gold1}" stroke="${strokeGold}" stroke-width="2"/>
+                    <ellipse cx="32" cy="46" rx="20" ry="8" fill="${gold3}" stroke="${strokeGold}" stroke-width="2"/>
+                    <rect x="22" y="22" width="20" height="16" rx="2" fill="${gold2}" opacity="0.4"/>
+                    <path d="M28 30 L32 26 L36 30" stroke="#b8860b" stroke-width="2" fill="none" stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="gGold1" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#fdf0b0"/><stop offset="100%" stop-color="#b8860b"/></linearGradient>
+                        <linearGradient id="gGold2" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#fff8dc"/><stop offset="100%" stop-color="#d4af37"/></linearGradient>
+                        <linearGradient id="gGold3" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#d4af37"/><stop offset="100%" stop-color="#8b6508"/></linearGradient>
+                    </defs>
+                </svg>`,
+
+                network: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="32" cy="32" r="24" fill="${gold1}" stroke="${strokeGold}" stroke-width="2"/>
+                    <ellipse cx="32" cy="32" rx="16" ry="8" stroke="${strokeGold}" stroke-width="1.5" fill="none"/>
+                    <ellipse cx="32" cy="32" rx="8" ry="16" stroke="${strokeGold}" stroke-width="1.5" fill="none"/>
+                    <circle cx="32" cy="20" r="3" fill="${strokeGold}"/>
+                    <circle cx="32" cy="44" r="3" fill="${strokeGold}"/>
+                    <circle cx="20" cy="32" r="3" fill="${strokeGold}"/>
+                    <circle cx="44" cy="32" r="3" fill="${strokeGold}"/>
+                    <defs>
+                        <linearGradient id="gGold1" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#fdf0b0"/><stop offset="100%" stop-color="#b8860b"/></linearGradient>
+                    </defs>
+                </svg>`,
+
+                security: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M32 6 L52 14 V30 C52 42 44 54 32 58 C20 54 12 42 12 30 V14 L32 6Z" fill="${gold1}" stroke="${strokeGold}" stroke-width="2"/>
+                    <rect x="24" y="28" width="16" height="12" rx="2" fill="${gold2}" stroke="${strokeGold}" stroke-width="1.5"/>
+                    <circle cx="32" cy="34" r="3" fill="${strokeGold}"/>
+                    <path d="M32 28 V24" stroke="#22c55e" stroke-width="2" stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="gGold1" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#fdf0b0"/><stop offset="100%" stop-color="#b8860b"/></linearGradient>
+                        <linearGradient id="gGold2" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#fff8dc"/><stop offset="100%" stop-color="#d4af37"/></linearGradient>
+                    </defs>
+                </svg>`,
+            };
+
+            return svgs[type] || svgs.computer;
+        }
+
+        // ============================================================
+        //  HELPERS
+        // ============================================================
+        function getQuestions(levelId) {
+            const lv = LEVELS.find(l => l.id === levelId);
+            return lv ? lv.questions : [];
+        }
+
+        function getFeedback(qkey, q) {
+            if (!submitted) return '';
+            const selected = selections[qkey] || '';
+            if (!selected) return '⬜ Not answered';
+            const correct = selected === q.ans;
+            const ansText = q.opts[q.ans.charCodeAt(0) - 65];
+            if (correct) {
+                return `✅ Correct!`;
+            } else {
+                return `❌ Wrong. Correct answer: <span class="correct-answer">${q.ans}. ${ansText}</span>`;
+            }
+        }
+
+        function getFeedbackClass(qkey, q) {
+            if (!submitted) return '';
+            const selected = selections[qkey] || '';
+            if (!selected) return '';
+            return selected === q.ans ? 'correct' : 'wrong';
+        }
+
+        // ============================================================
+        //  RENDER
+        // ============================================================
+        function renderTabs() {
+            const container = document.getElementById('tabsContainer');
+            container.innerHTML = '';
+            LEVELS.forEach(lv => {
+                const btn = document.createElement('button');
+                btn.className = 'tab-btn' + (lv.id === currentLevel ? ' active' : '');
+                btn.dataset.level = lv.id;
+                btn.innerHTML = `${lv.label} <span class="count">(${lv.questions.length})</span>`;
+                btn.addEventListener('click', () => {
+                    currentLevel = lv.id;
+                    submitted = false;
+                    document.getElementById('submittedBadge').classList.remove('show');
+                    document.getElementById('summaryBox').classList.remove('show');
+                    renderTabs();
+                    renderQuiz();
+                    updateScore();
+                });
+                container.appendChild(btn);
+            });
+        }
+
+        function renderQuiz() {
+            const container = document.getElementById('quizContent');
+            const questions = getQuestions(currentLevel);
+            if (!questions.length) {
+                container.innerHTML = '<div class="empty-state">No questions for this level.</div>';
+                return;
+            }
+
+            let html = `
+                <div class="summary-box" id="summaryBox"></div>
+            `;
+
+            questions.forEach((q, idx) => {
+                const key = `${currentLevel}-${q.id}`;
+                const selected = selections[key] || '';
+                const svgIcon = get3DSvgForQuestion(q);
+                const fbText = getFeedback(key, q);
+                const fbClass = getFeedbackClass(key, q);
+                const showClass = (submitted && fbText) ? 'show' : '';
+
+                let codeHtml = '';
+                if (q.code) {
+                    codeHtml = `<div class="code-block"><code>${q.code}</code></div>`;
+                }
+
+                html += `
+                    <div class="question-card" data-qkey="${key}">
+                        <div class="icon-3d-wrapper">
+                            ${svgIcon}
+                        </div>
+                        <div class="q-content">
+                            <div class="q-top-row">
+                                <span class="q-num">Q${idx+1}</span>
+                                <span class="q-text">${q.q}</span>
+                            </div>
+                            ${codeHtml}
+                            <div class="options">
+                                ${q.opts.map((opt, oi) => {
+                                    const letter = String.fromCharCode(65 + oi);
+                                    const checked = selected === letter ? 'checked' : '';
+                                    return `
+                                        <label>
+                                            <input type="radio" name="${key}" value="${letter}" ${checked} />
+                                            <span>${letter}. ${opt}</span>
+                                        </label>
+                                    `;
+                                }).join('')}
+                            </div>
+                            <div class="q-feedback ${fbClass} ${showClass}" id="fb-${key}">${fbText}</div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+
+            container.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const name = this.name;
+                    const val = this.value;
+                    selections[name] = val;
+
+                    if (submitted) {
+                        submitted = false;
+                        document.getElementById('submittedBadge').classList.remove('show');
+                        document.getElementById('summaryBox').classList.remove('show');
+                        document.querySelectorAll('.q-feedback').forEach(el => {
+                            el.classList.remove('show', 'correct', 'wrong');
+                            el.innerHTML = '';
+                        });
+                    } else {
+                        const fbEl = document.getElementById(`fb-${name}`);
+                        if (fbEl) {
+                            fbEl.classList.remove('show', 'correct', 'wrong');
+                            fbEl.innerHTML = '';
+                        }
+                    }
+                    updateScore();
+                });
+            });
+
+            document.getElementById('totalBadge').textContent = `${questions.length} questions`;
+            document.getElementById('totalDisplay').textContent = questions.length;
+            updateScore();
+        }
+
+        // ============================================================
+        //  SCORE
+        // ============================================================
+        function updateScore() {
+            const questions = getQuestions(currentLevel);
+            let correct = 0;
+            let answered = 0;
+            questions.forEach(q => {
+                const key = `${currentLevel}-${q.id}`;
+                const sel = selections[key] || '';
+                if (sel) {
+                    answered++;
+                    if (sel === q.ans) correct++;
+                }
+            });
+
+            const label = document.getElementById('scoreLabel');
+            const display = document.getElementById('scoreDisplay');
+            const total = document.getElementById('totalDisplay');
+
+            if (submitted) {
+                label.textContent = 'Score';
+                display.className = 'num';
+                display.textContent = correct;
+            } else {
+                label.textContent = 'Answered';
+                display.className = 'num-answered';
+                display.textContent = answered;
+            }
+            total.textContent = questions.length;
+        }
+
+        // ============================================================
+        //  SUBMIT
+        // ============================================================
+        function checkAll() {
+            const questions = getQuestions(currentLevel);
+            if (!questions.length) return;
+
+            submitted = true;
+            document.getElementById('submittedBadge').classList.add('show');
+
+            let correct = 0;
+            let wrong = 0;
+            let unanswered = 0;
+
+            questions.forEach(q => {
+                const key = `${currentLevel}-${q.id}`;
+                const sel = selections[key] || '';
+                if (sel) {
+                    if (sel === q.ans) correct++;
+                    else wrong++;
+                } else {
+                    unanswered++;
+                }
+                const fbEl = document.getElementById(`fb-${key}`);
+                if (fbEl) {
+                    fbEl.innerHTML = getFeedback(key, q);
+                    const cls = getFeedbackClass(key, q);
+                    fbEl.className = `q-feedback ${cls} show`;
+                }
+            });
+
+            const summaryBox = document.getElementById('summaryBox');
+            summaryBox.innerHTML = `
+                📊 <strong>Submission Result</strong> &nbsp;|&nbsp;
+                ✅ Correct: <span class="correct-count">${correct}</span> &nbsp;|&nbsp;
+                ❌ Wrong: <span class="wrong-count">${wrong}</span> &nbsp;|&nbsp;
+                ⬜ Unanswered: <span class="unanswered-count">${unanswered}</span> &nbsp;|&nbsp;
+                <strong>Total: ${questions.length}</strong>
+            `;
+            summaryBox.classList.add('show');
+            summaryBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            updateScore();
+        }
+
+        // ============================================================
+        //  RESET
+        // ============================================================
+        function resetCurrent() {
+            const questions = getQuestions(currentLevel);
+            questions.forEach(q => {
+                const key = `${currentLevel}-${q.id}`;
+                delete selections[key];
+            });
+            submitted = false;
+            document.getElementById('submittedBadge').classList.remove('show');
+            document.getElementById('summaryBox').classList.remove('show');
+            renderQuiz();
+            updateScore();
+        }
+
+        function clearAllSelections() {
+            selections = {};
+            submitted = false;
+            document.getElementById('submittedBadge').classList.remove('show');
+            document.getElementById('summaryBox').classList.remove('show');
+            renderQuiz();
+            updateScore();
+        }
+
+        // ============================================================
+        //  INIT
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTabs();
+            renderQuiz();
+            updateScore();
+
+            document.getElementById('checkBtn').addEventListener('click', checkAll);
+            document.getElementById('resetBtn').addEventListener('click', resetCurrent);
+            document.getElementById('clearAllBtn').addEventListener('click', clearAllSelections);
+        });
+    </script>
+</body>
+</html>
